@@ -2,6 +2,7 @@
 require("readline").emitKeypressEvents(process.stdin);
 process.stdin.setRawMode(true);
 
+// Use stdin.on to log keypress events
 process.stdin.on("keypress", (char, key) => {
   // The user can press b and it should beep right away
   if (char === "b" || char === "B") {
@@ -20,7 +21,7 @@ process.stdin.on("keypress", (char, key) => {
   }
   // The user can use ctrl+c to exit the program
   // Say "Thanks for using me, ciao!" before terminating
-  if (key.ctrl && key.name === "c") {
+  if (key.ctrl && (key.name === "c" || key.name === "C")) {
     console.log("Thanks for using me, ciao!");
     process.exit();
   }
